@@ -55,46 +55,15 @@
             </div>
             <div id="services" class="section section-card">
                 <ul id="cards-list" class="cards-list">
+                    @foreach ($services as $service)
                     <li>
                         <a class="card" href="#">
-                            <h3 class="card-ttl">Spread your ideas worldwide</h3>
-                            <p class="card-txt">
-                                The most challenging part of your plan is to spread your ideas and services all
-                                over the world. Give us your trust !
-                            </p>
-                            <img class="card-icon" src="{{ URL::asset('/img/icon-web.png') }}" alt="Web services">
+                            <h3 class="card-ttl">{{ $service->title }}</h3>
+                            <p class="card-txt">{{ $service->description }}</p>
+                            <img class="card-icon" src="/laravel/mediafork/public/{{$service->url}}" alt="{{ $service->Alt }}">
                         </a>
                     </li>
-                    <li>
-                        <a class="card" href="#">
-                            <h3 class="card-ttl">IT experts for you in no time</h3>
-                            <p class="card-txt">
-                                Our IT expert team is available 24 7 and will support you to solve your problem
-                                whenever it comes over.
-                            </p>
-                            <img class="card-icon" src="{{ URL::asset('/img/icon-time.png') }}" alt="Quick">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="card" href="#">
-                            <h3 class="card-ttl">Websites available on all devices</h3>
-                            <p class="card-txt">
-                                Designers and developers work together to bring you unique and highly valuable
-                                web interfaces declined for all the digital devices available on the market.
-                            </p>
-                            <img class="card-icon" src="{{ URL::asset('/img/icon-phone.png') }}" alt="Mobile expert">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="card" href="#">
-                            <h3 class="card-ttl">Creative team and fancy ideas</h3>
-                            <p class="card-txt">
-                                Web design trends are constantly changing. We are always looking for new ways
-                                to attract new customers to your business. Let the latest web trends inspire you.
-                            </p>
-                            <img class="card-icon" src="{{ URL::asset('/img/icon-lightbulb.png') }}" alt="Creative">
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </section>
@@ -104,42 +73,14 @@
                 <h3 class="title-main">Our last projects</h3>
             </div>
             <ul class="portfolio-grid">
+                @foreach ($portfolios as $portfolio)
                 <li>
-                    <img class="portfolio-img" src="{{ URL::asset('/img/project-1.jpg') }}" alt="Roll the Dole">
+                    <img class="portfolio-img" src="/laravel/mediafork/public/{{$portfolio->url}}" alt="{{ $portfolio->title }}">
                     <a href="#" class="portfolio-block">
-                        <span class="portfolio-brand">Roll the Dole</span>
+                        <span class="portfolio-brand">{{ $portfolio->title }}</span>
                     </a>
                 </li>
-                <li>
-                    <img class="portfolio-img" src="{{ URL::asset('/img/project-2.jpg') }}" alt="Hambone">
-                    <a href="#" class="portfolio-block">
-                        <span class="portfolio-brand">Hambone</span>
-                    </a>
-                </li>
-                <li>
-                    <img class="portfolio-img" src="{{ URL::asset('/img/project-3.jpg') }}" alt="Stewit">
-                    <a href="#" class="portfolio-block">
-                        <span class="portfolio-brand">Stewit</span>
-                    </a>
-                </li>
-                <li>
-                    <img class="portfolio-img" src="{{ URL::asset('/img/project-4.jpg') }}" alt="Zoonic">
-                    <a href="#" class="portfolio-block">
-                        <span class="portfolio-brand">Zoonic</span>
-                    </a>
-                </li>
-                <li>
-                    <img class="portfolio-img" src="{{ URL::asset('/img/project-5.jpg') }}" alt="Thin Curve">
-                    <a href="#" class="portfolio-block">
-                        <span class="portfolio-brand">Thin Curve</span>
-                    </a>
-                </li>
-                <li>
-                    <img class="portfolio-img" src="{{ URL::asset('/img/project-6.jpg') }}" alt="Who cares">
-                    <a href="#" class="portfolio-block">
-                        <span class="portfolio-brand">Who cares</span>
-                    </a>
-                </li>
+                @endforeach
             </ul>
         </section>
         <section id="contact" class="section">
@@ -207,7 +148,7 @@
             <li><a class="footer-legal-link" href="#">Privacy policy</a></li>
             <li><a class="footer-legal-link" href="#">Cookies</a></li>
             <li><a class="footer-legal-link" href="#">Site map</a></li>
-            <li><a class="footer-legal-link" href="{{ @route('register') }}">Admin</a></li>
+            <li><a class="footer-legal-link" href="{{ @route('register') }}">Connexion</a></li>
         </ul>
     </footer>
     @vite('resources/js/app.js')

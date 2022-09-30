@@ -20,6 +20,14 @@
                     <x-nav-link :href="route('dashboard/customers')" :active="request()->routeIs('dashboard/customers')">
                         {{ __('Customer') }}
                     </x-nav-link>
+                    @if (Auth::user()->admin === 1)
+                    <x-nav-link :href="route('dashboard/portfolio')" :active="request()->routeIs('dashboard/portfolio')">
+                        {{ __('Portfolio') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard/service')" :active="request()->routeIs('dashboard/service')">
+                        {{ __('Service') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

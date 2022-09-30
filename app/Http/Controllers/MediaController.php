@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\User;
-use Illuminate\Support\Facades\Redirect;
-
-
+use App\Models\Portfolio;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 
@@ -18,7 +16,10 @@ class MediaController extends Controller
      */
     public function index()
     {
-        return view('page');
+        return view('page', [
+            'portfolios' => Portfolio::all(),
+            'services' => Service::all()
+        ]);
     }
 
     /**

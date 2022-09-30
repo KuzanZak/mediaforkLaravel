@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redis;
 
-class UserController extends Controller
+class PortfolioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +15,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        if ($user->admin !== 1) return Redirect::route('dashboard/customers');
         return view(
-            "dashboard-user",
+            "dashboard-form-p",
             [
-                'users' => User::all()
+                'portfolios' => Portfolio::all()
             ]
         );
     }
@@ -34,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard-form-p');
     }
 
     /**
@@ -45,7 +41,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $portfolio = new Portfolio;
+        $portfolio->title = $request->title;
+        $portfolio->url = $request->url;
+        $portfolio->save();
+        return Redirect::route('dashboard/portfolio');
     }
 
     /**
@@ -67,6 +67,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        //
     }
 
     /**
@@ -78,6 +79,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
     }
 
     /**
@@ -89,21 +91,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function updateAdmin(int $iduser)
-    {
-        $user = User::find($iduser);
-        $user->admin = 1;
-        $user->save();
-        return Redirect::route('dashboard');
-    }
-
-    public function updateUser(int $iduser)
-    {
-        $user = User::find($iduser);
-        $user->admin = 0;
-        $user->save();
-        return Redirect::route('dashboard');
     }
 }

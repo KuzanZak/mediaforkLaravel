@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -25,10 +26,24 @@ Route::get('/', [MediaController::class, 'index'])->name('media');
 
 Route::post('/add', [CustomerController::class, 'store'])->name('mediastore');
 
-Route::get('/admin', [RegisteredUserController::class, 'editAdmin']);
-
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard/customers', [CustomerController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/customers');
+
+Route::get('/dashboard/portfolio', [PortfolioController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/portfolio');
+
+Route::get('/dashboard/portfolio/create', [PortfolioController::class, 'create'])->middleware(['auth', 'verified'])->name('dashboard/portfolio/create');
+
+Route::post('/dashboard/portfolio/add', [PortfolioController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard/portfolio/add');
+
+Route::get('/dashboard/service', [ServiceController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/service');
+
+Route::get('/dashboard/service/create', [ServiceController::class, 'create'])->middleware(['auth', 'verified'])->name('dashboard/service/create');
+
+Route::post('/dashboard/services/add', [ServiceController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard/services/add');
+
+Route::get('/dashboard/admin_{iduser}', [UserController::class, 'updateAdmin'])->name('dashboard/updateAdmin');
+
+Route::get('/dashboard/user_{iduser}', [UserController::class, 'updateUser'])->name('dashboard/updateUser');
 
 require __DIR__ . '/auth.php';

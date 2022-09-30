@@ -323,6 +323,31 @@ body.template-dark {
     color: var(--light-grey);
 }
 
+/*Portfolio*/
+.button-portfolio{
+    border: .2rem solid black;
+    background-color: gray;
+    color: white;
+    margin: 1rem 0;
+}
+
+.input-portfolio{
+    width: 80%;
+    height: 2rem;
+    margin: 1rem 0;
+}
+
+.list-portfolio{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.title-service{
+    text-align: center;
+    background-color: rgb(204, 204, 204);
+    
+}
+
 @media screen and (min-width: 768px) {
     .about {
         display: grid;
