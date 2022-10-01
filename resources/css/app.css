@@ -754,6 +754,18 @@ body.template-dark {
     grid-template-columns: 1fr;
 }
 
+.list-dashboard-admin{
+    display: grid;
+    grid-template-columns: 1fr;
+    border-right: .1rem solid var(--secondary-color);
+    margin: .2rem;
+}
+
+.list-dashboard-users{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
 .title-dashboard{
     text-align: center;
     font-size: 1.5rem;
@@ -797,7 +809,7 @@ body.template-dark {
 }
 
 @media screen and (min-width: 520px) {
-    .list-dashboard{
+    .list-dashboard, .list-dashboard-admin{
         grid-template-columns: repeat(2,1fr);
     }
     .title-dashboard{
@@ -820,7 +832,7 @@ body.template-dark {
 }
 
 @media screen and (min-width: 768px) {
-    .list-dashboard{
+    .list-dashboard, .list-dashboard-admin{
         grid-template-columns: repeat(3,1fr);
     }
     .title-dashboard{
