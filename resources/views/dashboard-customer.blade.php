@@ -1,8 +1,17 @@
 @extends('dashboard')
 @section('content')
-<div class="title-dashboard">
-    Customers
+@if($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
 </div>
+@endif
+<h2 class="title-dashboard">
+    Customers
+</h2>
 <ul class="list-dashboard">
     @foreach($customers as $customer)
     <li class="list-items-dashboard">
