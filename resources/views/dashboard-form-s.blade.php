@@ -10,43 +10,43 @@
     </ul>
 </div>
 @endif
-<h2 class="title-service">
+<h2 class="title-dashboard">
     Services
 </h2>
-<ul>
+<ul class="list-dashboard">
     @foreach($services as $service)
-    <li>
-        <p>Id : {{ $service->id }}</p>
-        <p>Title : {{ $service->title }}</p>
-        <p>Description : {{ $service->description }}</p>
-        <p>Url : {{ $service->url }}</p>
-        <p>Alt : {{ $service->Alt }}</p>
-        <br>
+    <li class="list-items-dashboard">
+        <p class="data-dashboard"><span class="span-title-dashboard">Id Service :</span> {{ $service->id }}</p>
+        <p class="data-dashboard"><span class="span-title-dashboard">Title Service :</span> {{ $service->title }}</p>
+        <p class="data-dashboard"><span class="span-title-dashboard">Description Service :</span> {{ $service->description }}</p>
+        <p class="data-dashboard"><span class="span-title-dashboard">Image service :</span> {{ $service->url }}</p>
+        <p class="data-dashboard"><span class="span-title-dashboard">Text Error Service :</span> {{ $service->Alt }}</p>
+        <hr>
     </li>
     @endforeach
 </ul>
-<h2>Formulaire : </h2>
-<form class="contact-form" action="{{ @route('dashboard/services/add')}}" method="post">
+<h2 class="title-dashboard">Formulaire</h2>
+<form action="{{ @route('dashboard/services/add')}}" method="post">
     @csrf
-    <ul class="list-services">
-        <li>
-            <label for="title">Title of your service :</label>
-            <input class="input-portfolio" type="text" id="title" name="title" value="">
+    <ul class="form-list-dashboard">
+        <li class="form-items-dashboard">
+            <label for="title">Title Service :</label>
+            <input class="input-dashboard" type="text" id="title" name="title" value="">
         </li>
-        <li>
-            <label for="paragraph-service">Description : </label>
-            <input class="input-portfolio" type="text" id="paragraph" name="paragraph" value="">
+        <li class="form-items-dashboard">
+            <label for="paragraph-service">Description Service : </label>
+            <input class="input-dashboard" type="text" id="paragraph" name="paragraph" value="">
         </li>
-        <li>
-            <label for="icon">Icon url : </label>
-            <input class="input-portfolio" type="text" id="icon" name="icon" value="">
+        <li class="form-items-dashboard">
+            <label for="icon">Image service : </label>
+            <input class="input-dashboard" type="text" id="icon" name="icon" value="">
         </li>
-        <li>
-            <label for="alt">Alt : </label>
-            <input class="input-portfolio" type="text" id="alt" name="alt" value="">
+        <li class="form-items-dashboard">
+            <label for="alt">Text Error Service : </label>
+            <input class="input-dashboard" type="text" id="alt" name="alt" value="">
         </li>
-        <li>
-            <input class="button-portfolio" type="submit" id="submit" name="submit" value="Add service">
+        <li class="form-items-dashboard">
+            <input class="button-dashboard" type="submit" id="submit" name="submit" value="Add service">
         </li>
     </ul>
 </form>

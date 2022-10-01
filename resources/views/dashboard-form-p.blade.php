@@ -10,33 +10,33 @@
     </ul>
 </div>
 @endif
-<div class="p-6 bg-white border-b border-gray-200">
+<div class="title-dashboard">
     Portfolios
 </div>
-<ul>
+<ul class="list-dashboard">
     @foreach($portfolios as $portfolio)
-    <li>
-        <p>Id : {{ $portfolio->id }}</p>
-        <p>Title : {{ $portfolio->title }}</p>
-        <p>Url : {{ $portfolio->url }}</p>
-        <br>
+    <li class="list-items-dashboard">
+        <p class="data-dashboard"><span class="span-title-dashboard">Id Portfolio :</span> {{ $portfolio->id }}</p>
+        <p class="data-dashboard"><span class="span-title-dashboard">Title Portfolio :</span> {{ $portfolio->title }}</p>
+        <p class="data-dashboard"><span class="span-title-dashboard">Image Portfolio :</span> {{ $portfolio->url }}</p>
+        <hr>
     </li>
     @endforeach
 </ul>
-<h2>Formulaire : </h2>
-<form class="contact-form" action="{{ @route('dashboard/portfolio/add')}}" method="post">
+<h2 class="title-dashboard">Formulaire</h2>
+<form action="{{ @route('dashboard/portfolio/add')}}" method="post">
     @csrf
-    <ul class="list-portfolio">
-        <li>
+    <ul class="form-list-dashboard">
+        <li class="form-items-dashboard">
             <label for="title">Title of your project :</label>
-            <input class="input-portfolio" type="text" id="title" name="title" value="">
+            <input class="input-dashboard" type="text" id="title" name="title" value="">
         </li>
-        <li>
+        <li class="form-items-dashboard">
             <label for="url">URL of your project : </label>
-            <input class="input-portfolio" type="text" id="url" name="url" value="">
+            <input class="input-dashboard" type="text" id="url" name="url" value="">
         </li>
-        <li>
-            <input class="button-portfolio" type="submit" id="submit" name="submit-portfolio" value="Add portfolio">
+        <li class="form-items-dashboard">
+            <input class="button-dashboard" type="submit" id="submit" name="submit-portfolio" value="Add portfolio">
         </li>
     </ul>
 </form>

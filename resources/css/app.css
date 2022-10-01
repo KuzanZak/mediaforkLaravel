@@ -323,31 +323,6 @@ body.template-dark {
     color: var(--light-grey);
 }
 
-/*Portfolio*/
-.button-portfolio{
-    border: .2rem solid black;
-    background-color: gray;
-    color: white;
-    margin: 1rem 0;
-}
-
-.input-portfolio{
-    width: 80%;
-    height: 2rem;
-    margin: 1rem 0;
-}
-
-.list-portfolio{
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
-.title-service{
-    text-align: center;
-    background-color: rgb(204, 204, 204);
-    
-}
-
 @media screen and (min-width: 768px) {
     .about {
         display: grid;
@@ -358,7 +333,6 @@ body.template-dark {
         padding: 5rem;
     }
 }
-
 
 
 /* SERVICES */
@@ -764,5 +738,103 @@ body.template-dark {
 @media screen and (min-width: 768px) {
     .modal-icon {
         height: calc(100% - 4rem);
+    }
+}
+
+
+/* Dashboard */
+.input-dashboard{
+    width: 80%;
+    height: 2rem;
+    margin: .4rem 0;
+}
+
+.list-dashboard{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.title-dashboard{
+    text-align: center;
+    font-size: 1.5rem;
+    width: 50%;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    background-color: var(--secondary-color);
+    padding: .8rem;
+    margin: 1rem auto; 
+    margin-bottom: 2rem;
+}
+
+.list-items-dashboard{
+    margin: 2rem 1rem;
+    line-height: 1.8rem;
+}
+
+.data-dashboard{
+    font-style: italic;
+}
+.span-title-dashboard{
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.form-items-dashboard{
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 1.3rem 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.button-dashboard{
+    background-color: var(--secondary-color);
+    color: white;
+    padding: .4rem;
+    width: 50%;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 520px) {
+    .list-dashboard{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .title-dashboard{
+        padding: .5rem;
+    }
+    .form-list-dashboard{
+        position : relative; 
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .input-dashboard{
+        margin: 0;
+    }
+    .button-dashboard{
+        width: 50%;
+        margin: 0;
+    }
+    
+}
+
+@media screen and (min-width: 768px) {
+    .list-dashboard{
+        grid-template-columns: repeat(3,1fr);
+    }
+    .title-dashboard{
+        padding: .5rem;
+    }
+    .form-list-dashboard{
+        position : relative; 
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .input-dashboard{
+        width: 70%;
+    }
+    .button-dashboard{
+        width: 30%;
     }
 }
