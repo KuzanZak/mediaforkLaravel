@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,8 @@ class CustomerController extends Controller
         return view(
             "dashboard-customer",
             [
-                'customers' => Customer::all()
+                'customers' => Customer::all(),
+                'users' => User::all()
             ]
         );
     }
@@ -101,5 +103,14 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function deleteCustomer(int $idcustomer)
+    {
+        var_dump($idcustomer);
+        exit;
+        $customer = Customer::find($idcustomer);
+        $customer->delete();
+        return Redirect::route('dashboard-customer');
     }
 }

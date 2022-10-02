@@ -46,6 +46,8 @@ Route::get('/dashboard/admin_{iduser}', [UserController::class, 'updateAdmin'])-
 
 Route::get('/dashboard/delete_{iduser}', [UserController::class, 'deleteUser'])->name('dashboard/deleteUser');
 
+Route::get('/dashboard/delete_{idcustomer}', [CustomerController::class, 'deleteCustomer'])->name('dashboard/deleteCustomer');
+
 Route::get('/dashboard/user_{iduser}', [UserController::class, 'updateUser'])->name('dashboard/updateUser');
 
 require __DIR__ . '/auth.php';
