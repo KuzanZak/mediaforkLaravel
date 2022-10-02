@@ -20,8 +20,7 @@ class CustomerController extends Controller
         return view(
             "dashboard-customer",
             [
-                'customers' => Customer::all(),
-                'users' => User::all()
+                'customers' => Customer::all()
             ]
         );
     }

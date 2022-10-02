@@ -23,13 +23,13 @@
             <p class="data-dashboard"><span class="span-title-dashboard">Nom :</span> {{ $user->name }}</p>
             <p class="data-dashboard"><span class="span-title-dashboard">Email :</span> {{ $user->email }}</p>
             <p class="data-dashboard"><span class="span-title-dashboard">Admin :</span> {{ $user->admin }}
-                @if (Route::has('dashboard/deleteUser') && $user->id !== Auth::id())
+                @if ($user->id !== Auth::id())
                 <a href="{{ @route('dashboard/updateUser', $user->id)}}">
                     <i class="fa fa-minus" aria-hidden="true"></i>
                 </a>
                 @endif
             </p>
-            @if (Route::has('dashboard/deleteUser') && $user->id !== Auth::id())
+            @if ($user->id !== Auth::id())
             <p class="data-dashboard"><span class="span-title-dashboard">Delete :</span>
                 <a href="{{ @route('dashboard/deleteUser', $user->id)}}">
                     <i class="fa fa-ban" aria-hidden="true"></i>
@@ -49,14 +49,14 @@
             <p class="data-dashboard"><span class="span-title-dashboard">Nom :</span> {{ $user->name }}</p>
             <p class="data-dashboard"><span class="span-title-dashboard">Email :</span> {{ $user->email }}</p>
             <p class="data-dashboard"><span class="span-title-dashboard">Admin :</span> {{ $user->admin }}
-                @if (Route::has('dashboard/deleteUser') && $user->id !== Auth::id())
+                @if ($user->id !== Auth::id())
                 <a href="{{ @route('dashboard/updateAdmin', $user->id)}}">
                     <i class=" fa fa-check-square" aria-hidden="true"></i>
                 </a>
                 @endif
             </p>
             <p class="data-dashboard"><span class="span-title-dashboard">Delete :</span>
-                @if (Route::has('dashboard/deleteUser') && $user->id !== Auth::id())
+                @if ($user->id !== Auth::id())
                 <a href="{{ @route('dashboard/deleteUser', $user->id)}}">
                     <i class="fa fa-ban" aria-hidden="true"></i>
                 </a>

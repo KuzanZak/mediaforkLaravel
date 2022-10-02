@@ -46,6 +46,8 @@ Route::get('/dashboard/admin_{iduser}', [UserController::class, 'updateAdmin'])-
 
 Route::get('/dashboard/customers/delete_{idcustomer}', [CustomerController::class, 'deleteCustomer'])->name('dashboard/customers/delete');
 
+Route::get('/dashboard/portfolio/delete_{idcustomer}', [PortfolioController::class, 'destroyPortfolio'])->name('dashboard/portfolio/delete');
+
 Route::get('/dashboard/delete_{iduser}', [UserController::class, 'deleteUser'])->name('dashboard/deleteUser');
 
 Route::get('/dashboard/user_{iduser}', [UserController::class, 'updateUser'])->name('dashboard/updateUser');

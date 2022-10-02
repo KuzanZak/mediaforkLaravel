@@ -88,8 +88,10 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyPortfolio($id)
     {
-        //
+        $Portfolio = Portfolio::find($id);
+        $Portfolio->delete();
+        return Redirect::route('dashboard/portfolio');
     }
 }

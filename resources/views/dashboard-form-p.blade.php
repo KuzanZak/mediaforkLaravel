@@ -19,6 +19,13 @@
         <p class="data-dashboard"><span class="span-title-dashboard">Id Portfolio :</span> {{ $portfolio->id }}</p>
         <p class="data-dashboard"><span class="span-title-dashboard">Title Portfolio :</span> {{ $portfolio->title }}</p>
         <p class="data-dashboard"><span class="span-title-dashboard">Image Portfolio :</span> {{ $portfolio->url }}</p>
+        @if (Auth::id() === 1)
+        <p class="data-dashboard"><span class="span-title-dashboard">Delete :</span>
+            <a href="{{ @route('dashboard/portfolio/delete', $portfolio->id)}}">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </a>
+        </p>
+        @endif
         <hr>
     </li>
     @endforeach
