@@ -29,6 +29,13 @@
                 </a>
                 @endif
             </p>
+            <p class="data-dashboard"><span class="span-title-dashboard">Delete :</span>
+                @if ($user->id !== Auth::id())
+                <a href="{{ @route('dashboard/deleteUser', $user->id)}}">
+                    <i class="fa fa-ban" aria-hidden="true"></i>
+                </a>
+                @endif
+            </p>
             <br>
         </li>
         @endif
@@ -45,6 +52,13 @@
                 @if ($user->id !== Auth::id())
                 <a href="{{ @route('dashboard/updateAdmin', $user->id)}}">
                     <i class=" fa fa-check-square" aria-hidden="true"></i>
+                </a>
+                @endif
+            </p>
+            <p class="data-dashboard"><span class="span-title-dashboard">Delete :</span>
+                @if ($user->id !== Auth::id())
+                <a href="{{ @route('dashboard/deleteUser', $user->id)}}">
+                    <i class="fa fa-ban" aria-hidden="true"></i>
                 </a>
                 @endif
             </p>

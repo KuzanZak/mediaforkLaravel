@@ -106,4 +106,11 @@ class UserController extends Controller
         $user->save();
         return Redirect::route('dashboard');
     }
+
+    public function deleteUser(int $iduser)
+    {
+        $user = User::find($iduser);
+        $user->delete();
+        return Redirect::route('dashboard');
+    }
 }
