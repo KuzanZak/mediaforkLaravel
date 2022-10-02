@@ -79,6 +79,7 @@ class AccountController extends Controller
     {
         $user = User::find($id);
         $iduser = $user->id;
+        $adminuser = $user->admin;
         $user->delete();
 
         $newUser = new User();
@@ -86,6 +87,7 @@ class AccountController extends Controller
         $newUser->name = $request->name;
         $newUser->email = $request->email;
         $newUser->password = $request->password;
+        $newUser->admin = $adminuser;
         $newUser->save();
         return Redirect::route('dashboard/account');
     }
