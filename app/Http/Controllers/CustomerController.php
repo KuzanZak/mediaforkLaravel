@@ -107,8 +107,6 @@ class CustomerController extends Controller
 
     public function deleteCustomer(int $idcustomer)
     {
-        var_dump($idcustomer);
-        exit;
         $customer = Customer::find($idcustomer);
         $customer->delete();
         return Redirect::route('dashboard-customer');

@@ -44,9 +44,9 @@ Route::post('/dashboard/services/add', [ServiceController::class, 'store'])->mid
 
 Route::get('/dashboard/admin_{iduser}', [UserController::class, 'updateAdmin'])->name('dashboard/updateAdmin');
 
-Route::get('/dashboard/delete_{iduser}', [UserController::class, 'deleteUser'])->name('dashboard/deleteUser');
+Route::get('/dashboard/delete_customer_{idcustomer}', [CustomerController::class, 'deleteCustomer'])->name('dashboard/deleteCustomer');
 
-Route::get('/dashboard/delete_{idcustomer}', [CustomerController::class, 'deleteCustomer'])->name('dashboard/deleteCustomer');
+Route::get('/dashboard/delete_{iduser}', [UserController::class, 'deleteUser'])->name('dashboard/deleteUser');
 
 Route::get('/dashboard/user_{iduser}', [UserController::class, 'updateUser'])->name('dashboard/updateUser');
 

@@ -109,6 +109,7 @@ class UserController extends Controller
 
     public function deleteUser(int $iduser)
     {
+        if (empty($iduser)) return Redirect::route('dashboard/customers');
         $user = User::find($iduser);
         $user->delete();
         return Redirect::route('dashboard');
