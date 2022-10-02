@@ -90,8 +90,8 @@ class PortfolioController extends Controller
      */
     public function destroyPortfolio($id)
     {
-        $Portfolio = Portfolio::find($id);
-        $Portfolio->delete();
+        $portfolio = Portfolio::find($id);
+        $portfolio->delete();
         return Redirect::route('dashboard/portfolio');
     }
 }

@@ -21,6 +21,13 @@
         <p class="data-dashboard"><span class="span-title-dashboard">Description Service :</span> {{ $service->description }}</p>
         <p class="data-dashboard"><span class="span-title-dashboard">Image service :</span> {{ $service->url }}</p>
         <p class="data-dashboard"><span class="span-title-dashboard">Text Error Service :</span> {{ $service->Alt }}</p>
+        @if (Auth::id() === 1)
+        <p class="data-dashboard"><span class="span-title-dashboard">Delete :</span>
+            <a href="{{ @route('dashboard/service/delete', $service->id)}}">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </a>
+        </p>
+        @endif
         <hr>
     </li>
     @endforeach
