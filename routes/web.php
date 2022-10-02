@@ -37,6 +37,8 @@ Route::get('/dashboard/portfolio/create', [PortfolioController::class, 'create']
 
 Route::post('/dashboard/portfolio/add', [PortfolioController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard/portfolio/add');
 
+Route::post('/dashboard/account/add_{iduser}', [AccountController::class, 'deleteStore'])->middleware(['auth', 'verified'])->name('dashboard/account/add');
+
 Route::get('/dashboard/service', [ServiceController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/service');
 
 Route::get('/dashboard/account', [AccountController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/account');

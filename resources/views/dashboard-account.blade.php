@@ -14,7 +14,7 @@
 <h2 class="title-dashboard">
     Account
 </h2>
-<form action="{{ @route('dashboard/services/add')}}" method="post">
+<form action="{{ @route('dashboard/account/add', Auth::id())}}" method="post">
     @csrf
     <ul class="form-list-dashboard">
         <li class="form-items-dashboard">

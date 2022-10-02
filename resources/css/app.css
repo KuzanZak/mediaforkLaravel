@@ -779,6 +779,22 @@ body.template-dark {
     margin-bottom: 2rem;
 }
 
+
+.list-title-dashboard-users{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+}
+
+.subtitle-dashboard{
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+    background-color: var(--light-grey);
+    padding: .4rem;
+    margin: 1rem auto; 
+}
+
 .list-items-dashboard{
     margin: 2rem 1rem;
     line-height: 1.8rem;
@@ -814,6 +830,11 @@ body.template-dark {
     }
     .title-dashboard{
         padding: .5rem;
+    }
+    .subtitle-dashboard{
+        font-size: 1.2rem;
+        padding: .6rem;
+        margin: 1rem auto; 
     }
     .form-list-dashboard{
         position : relative; 

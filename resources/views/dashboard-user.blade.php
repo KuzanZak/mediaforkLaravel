@@ -14,6 +14,10 @@
 <h2 class="title-dashboard">
     Users
 </h2>
+<div class="list-title-dashboard-users">
+    <h3 class="subtitle-dashboard">List of Admins</h3>
+    <h3 class="subtitle-dashboard">List of Users</h3>
+</div>
 <section class="list-dashboard-users">
     <ul class="list-dashboard-admin">
         @foreach($users as $user)

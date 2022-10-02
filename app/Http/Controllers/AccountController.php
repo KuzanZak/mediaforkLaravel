@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class AccountController extends Controller
 {
@@ -22,17 +24,6 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
     {
         //
     }
@@ -77,8 +68,25 @@ class AccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyUser($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return Redirect::route('dashboard/account');
+    }
+
+    public function deleteStore(Request $request, int $id)
+    {
+        $user = User::find($id);
+        $iduser = $user->id;
+        $user->delete();
+
+        $newUser = new User();
+        $newUser->id = $iduser;
+        $newUser->name = $request->name;
+        $newUser->email = $request->email;
+        $newUser->password = $request->password;
+        $newUser->save();
+        return Redirect::route('dashboard/account');
     }
 }
