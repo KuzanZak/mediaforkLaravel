@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PortfolioController;
@@ -37,6 +38,8 @@ Route::get('/dashboard/portfolio/create', [PortfolioController::class, 'create']
 Route::post('/dashboard/portfolio/add', [PortfolioController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard/portfolio/add');
 
 Route::get('/dashboard/service', [ServiceController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/service');
+
+Route::get('/dashboard/account', [AccountController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/account');
 
 Route::get('/dashboard/service/create', [ServiceController::class, 'create'])->middleware(['auth', 'verified'])->name('dashboard/service/create');
 

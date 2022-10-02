@@ -20,7 +20,7 @@
         @if ($user->admin === 1)
         <li class="list-items-dashboard">
             <p class="data-dashboard"><span class="span-title-dashboard">Id :</span> {{ $user->id }}</p>
-            <p class="data-dashboard"><span class="span-title-dashboard">Nom :</span> {{ $user->name }}</p>
+            <p class="data-dashboard"><span class="span-title-dashboard">Name :</span> {{ $user->name }}</p>
             <p class="data-dashboard"><span class="span-title-dashboard">Email :</span> {{ $user->email }}</p>
             <p class="data-dashboard"><span class="span-title-dashboard">Admin :</span> {{ $user->admin }}
                 @if ($user->id !== Auth::id())
