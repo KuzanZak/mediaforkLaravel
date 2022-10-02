@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redis;
 
 class UserController extends Controller
 {
@@ -109,7 +108,7 @@ class UserController extends Controller
 
     public function deleteUser(int $iduser)
     {
-        if (empty($iduser)) return Redirect::route('dashboard/customers');
+        if (empty($iduser) && !is_int($iduser)) return Redirect::route('dashboard/customers');
         $user = User::find($iduser);
         $user->delete();
         return Redirect::route('dashboard');
