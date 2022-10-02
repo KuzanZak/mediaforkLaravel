@@ -29,13 +29,13 @@
                 </a>
                 @endif
             </p>
+            @if ($user->id !== Auth::id())
             <p class="data-dashboard"><span class="span-title-dashboard">Delete :</span>
-                @if ($user->id !== Auth::id())
                 <a href="{{ @route('dashboard/deleteUser', $user->id)}}">
                     <i class="fa fa-ban" aria-hidden="true"></i>
                 </a>
-                @endif
             </p>
+            @endif
             <br>
         </li>
         @endif
