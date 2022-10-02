@@ -109,6 +109,6 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($idcustomer);
         $customer->delete();
-        return Redirect::route('dashboard-customer');
+        return Redirect::route('dashboard/customers');
     }
 }
