@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,10 +21,11 @@ class ServiceController extends Controller
             "dashboard-form-s",
             [
                 'services' => Service::all(),
-                "action" => route('dashboard/service/add'),
-                "title" => "",
-                "paragraph" => "",
-                "alt" => ""
+                'admin' =>  Auth::user()->admin,
+                'action' => route('dashboard/service/add'),
+                'title' => "",
+                'paragraph' => "",
+                'alt' => ""
             ]
         );
     }
@@ -77,11 +79,12 @@ class ServiceController extends Controller
         return view(
             'dashboard-form-s',
             [
-                "services" => Service::all(),
-                "action" => route('dashboard/service/update', $service->id),
-                "title" => $service->title,
-                "paragraph" => $service->description,
-                "alt" => $service->Alt
+                'services' => Service::all(),
+                'admin' => Auth::user()->admin,
+                'action' => route('dashboard/service/update', $service->id),
+                'title' => $service->title,
+                'paragraph' => $service->description,
+                'alt' => $service->Alt
             ]
         );
     }

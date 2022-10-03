@@ -19,6 +19,7 @@
         <p class="data-dashboard"><span class="span-title-dashboard">Id Portfolio :</span> {{ $portfolio->id }}</p>
         <p class="data-dashboard"><span class="span-title-dashboard">Title Portfolio :</span> {{ $portfolio->title }}</p>
         <p class="data-dashboard"><span class="span-title-dashboard">Image Portfolio :</span> {{ asset($portfolio->url) }}</p>
+        @if ($admin === 1)
         <p class="data-dashboard"><span class="span-title-dashboard">Delete :</span>
             <a href="{{ @route('dashboard/portfolio/delete', $portfolio->id)}}">
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -29,6 +30,7 @@
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </a>
         </p>
+        @endif
         <hr>
     </li>
     @endforeach

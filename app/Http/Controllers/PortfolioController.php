@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Portfolio;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,6 +22,7 @@ class PortfolioController extends Controller
             "dashboard-form-p",
             [
                 'portfolios' => Portfolio::all(),
+                'admin' => Auth::user()->admin,
                 "action" => route('dashboard/portfolio/add'),
                 "title" => "",
             ]
@@ -76,6 +78,7 @@ class PortfolioController extends Controller
             'dashboard-form-p',
             [
                 "portfolios" => Portfolio::all(),
+                'admin' => Auth::user()->admin,
                 "action" => route('dashboard/portfolio/update', $portfolio->id),
                 "title" => $portfolio->title,
             ]
