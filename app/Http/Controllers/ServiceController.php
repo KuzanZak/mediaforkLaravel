@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
@@ -22,7 +23,6 @@ class ServiceController extends Controller
                 "action" => route('dashboard/service/add'),
                 "title" => "",
                 "paragraph" => "",
-                "icon" => "",
                 "alt" => ""
             ]
         );
@@ -47,7 +47,7 @@ class ServiceController extends Controller
     {
         $service = new Service();
         $service->title = $request->title;
-        $service->url = $request->icon;
+        $service->url = Storage::putFile('service', $request->file('file'));
         $service->description = $request->paragraph;
         $service->Alt = $request->alt;
         $service->save();
@@ -81,7 +81,6 @@ class ServiceController extends Controller
                 "action" => route('dashboard/service/update', $service->id),
                 "title" => $service->title,
                 "paragraph" => $service->description,
-                "icon" => $service->url,
                 "alt" => $service->Alt
             ]
         );
@@ -99,7 +98,7 @@ class ServiceController extends Controller
         $service = Service::find($id);
         $service->title = $request->title;
         $service->description = $request->paragraph;
-        $service->url = $request->icon;
+        $service->url = Storage::putFile('service', $request->file('file'));
         $service->Alt = $request->alt;
         $service->save();
         return Redirect::route('dashboard/service');

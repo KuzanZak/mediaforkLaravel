@@ -802,6 +802,7 @@ body.template-dark {
 
 .data-dashboard{
     font-style: italic;
+    word-break: break-all;
 }
 .span-title-dashboard{
     font-style: normal;

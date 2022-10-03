@@ -6,6 +6,7 @@ use App\Models\Portfolio;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
@@ -22,7 +23,6 @@ class PortfolioController extends Controller
                 'portfolios' => Portfolio::all(),
                 "action" => route('dashboard/portfolio/add'),
                 "title" => "",
-                "url" => ""
             ]
         );
     }
@@ -46,7 +46,8 @@ class PortfolioController extends Controller
     {
         $portfolio = new Portfolio;
         $portfolio->title = $request->title;
-        $portfolio->url = $request->url;
+        // $portfolio->url = $request->file('file')->store('public/portfolio');
+        $portfolio->url = Storage::putFile('portfolio', $request->file('file'));
         $portfolio->save();
         return Redirect::route('dashboard/portfolio');
     }
@@ -77,7 +78,6 @@ class PortfolioController extends Controller
                 "portfolios" => Portfolio::all(),
                 "action" => route('dashboard/portfolio/update', $portfolio->id),
                 "title" => $portfolio->title,
-                "url" => $portfolio->url
             ]
         );
     }
@@ -93,7 +93,7 @@ class PortfolioController extends Controller
     {
         $portfolio = Portfolio::find($id);
         $portfolio->title = $request->title;
-        $portfolio->url = $request->url;
+        $portfolio->url = Storage::putFile('portfolio', $request->file('file'));
         $portfolio->save();
         return Redirect::route('dashboard/portfolio');
     }

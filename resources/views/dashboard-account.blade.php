@@ -26,10 +26,6 @@
             <input class="input-dashboard" type="email" id="email" name="email" value="{{Auth::user()->email}}">
         </li>
         <li class="form-items-dashboard">
-            <label for="password">Password : </label>
-            <input class="input-dashboard" type="text" id="password" name="password" value="">
-        </li>
-        <li class="form-items-dashboard">
             <input class="button-dashboard" type="submit" id="submit" name="submit" value="Accept changes">
         </li>
     </ul>

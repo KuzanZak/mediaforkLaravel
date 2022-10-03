@@ -19,9 +19,8 @@
         <p class="data-dashboard"><span class="span-title-dashboard">Id Service :</span> {{ $service->id }}</p>
         <p class="data-dashboard"><span class="span-title-dashboard">Title Service :</span> {{ $service->title }}</p>
         <p class="data-dashboard"><span class="span-title-dashboard">Description Service :</span> {{ $service->description }}</p>
-        <p class="data-dashboard"><span class="span-title-dashboard">Image service :</span> {{ $service->url }}</p>
+        <p class="data-dashboard"><span class="span-title-dashboard">Image service :</span> {{ asset($service->url) }}</p>
         <p class="data-dashboard"><span class="span-title-dashboard">Text Error Service :</span> {{ $service->Alt }}</p>
-        @if (Auth::id() === 1)
         <p class="data-dashboard"><span class="span-title-dashboard">Delete :</span>
             <a href="{{ @route('dashboard/service/delete', $service->id)}}">
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -32,13 +31,12 @@
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </a>
         </p>
-        @endif
         <hr>
     </li>
     @endforeach
 </ul>
 <h2 class="title-dashboard">Formulaire</h2>
-<form action="{{$action}}" method="post">
+<form action="{{$action}}" method="post" enctype="multipart/form-data">
     @csrf
     <ul class="form-list-dashboard">
         <li class="form-items-dashboard">
@@ -50,12 +48,12 @@
             <input class="input-dashboard" type="text" id="paragraph" name="paragraph" value="{{$paragraph}}">
         </li>
         <li class="form-items-dashboard">
-            <label for="icon">Image service : </label>
-            <input class="input-dashboard" type="text" id="icon" name="icon" value="{{$icon}}">
-        </li>
-        <li class="form-items-dashboard">
             <label for="alt">Text Error Service : </label>
             <input class="input-dashboard" type="text" id="alt" name="alt" value="{{$alt}}">
+        </li>
+        <li class="form-items-dashboard">
+            <label for="file">File : </label>
+            <input class="input-dashboard" type="file" id="file" name="file" value="">
         </li>
         <li class="form-items-dashboard">
             <input class="button-dashboard" type="submit" id="submit" name="submit" value="Add service">
