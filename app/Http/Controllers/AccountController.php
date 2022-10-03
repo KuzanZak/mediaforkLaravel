@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class AccountController extends Controller
@@ -40,17 +41,6 @@ class AccountController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -70,25 +60,15 @@ class AccountController extends Controller
      */
     public function destroyUser($id)
     {
-        $user = User::find($id);
-        $user->delete();
-        return Redirect::route('dashboard/account');
     }
 
-    public function deleteStore(Request $request, int $id)
+    public function edit(Request $request, int $id)
     {
         $user = User::find($id);
-        $iduser = $user->id;
-        $adminuser = $user->admin;
-        $user->delete();
-
-        $newUser = new User();
-        $newUser->id = $iduser;
-        $newUser->name = $request->name;
-        $newUser->email = $request->email;
-        $newUser->password = $request->password;
-        $newUser->admin = $adminuser;
-        $newUser->save();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
         return Redirect::route('dashboard/account');
     }
 }

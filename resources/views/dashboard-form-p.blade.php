@@ -25,22 +25,27 @@
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
             </a>
         </p>
+        <p class="data-dashboard"><span class="span-title-dashboard">Modify :</span>
+            <a href="{{ @route('dashboard/portfolio/edit', $portfolio->id)}}">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </a>
+        </p>
         @endif
         <hr>
     </li>
     @endforeach
 </ul>
 <h2 class="title-dashboard">Formulaire</h2>
-<form action="{{ @route('dashboard/portfolio/add')}}" method="post">
+<form action="{{$action}}" method="post">
     @csrf
     <ul class="form-list-dashboard">
         <li class="form-items-dashboard">
             <label for="title">Title of your project :</label>
-            <input class="input-dashboard" type="text" id="title" name="title" value="">
+            <input class="input-dashboard" type="text" id="title" name="title" value="{{$title}}">
         </li>
         <li class="form-items-dashboard">
             <label for="url">URL of your project : </label>
-            <input class="input-dashboard" type="text" id="url" name="url" value="">
+            <input class="input-dashboard" type="text" id="url" name="url" value="{{$url}}">
         </li>
         <li class="form-items-dashboard">
             <input class="button-dashboard" type="submit" id="submit" name="submit-portfolio" value="Add portfolio">

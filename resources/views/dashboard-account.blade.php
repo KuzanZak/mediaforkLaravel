@@ -27,7 +27,7 @@
         </li>
         <li class="form-items-dashboard">
             <label for="password">Password : </label>
-            <input class="input-dashboard" type="text" id="password" name="password" value="{{Auth::user()->password}}">
+            <input class="input-dashboard" type="text" id="password" name="password" value="">
         </li>
         <li class="form-items-dashboard">
             <input class="button-dashboard" type="submit" id="submit" name="submit" value="Accept changes">

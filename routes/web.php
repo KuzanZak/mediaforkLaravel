@@ -32,22 +32,27 @@ Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 
 Route::get('/dashboard/customers', [CustomerController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/customers');
 
 Route::get('/dashboard/portfolio', [PortfolioController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/portfolio');
-
-Route::get('/dashboard/portfolio/create', [PortfolioController::class, 'create'])->middleware(['auth', 'verified'])->name('dashboard/portfolio/create');
-
 Route::post('/dashboard/portfolio/add', [PortfolioController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard/portfolio/add');
+Route::get('/dashboard/portfolio/edit_{idportfolio}', [PortfolioController::class, 'edit'])->middleware(['auth', 'verified'])->name('dashboard/portfolio/edit');
+Route::post('/dashboard/portfolio/update_{idportfolio}', [PortfolioController::class, 'update'])->middleware(['auth', 'verified'])->name('dashboard/portfolio/update');
 
-Route::post('/dashboard/account/add_{iduser}', [AccountController::class, 'deleteStore'])->middleware(['auth', 'verified'])->name('dashboard/account/add');
+
 
 Route::get('/dashboard/service', [ServiceController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/service');
+Route::post('/dashboard/service/add', [ServiceController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard/service/add');
+Route::get('/dashboard/service/edit_{idservice}', [ServiceController::class, 'edit'])->middleware(['auth', 'verified'])->name('dashboard/service/edit');
+Route::post('/dashboard/service/update_{idservice}', [ServiceController::class, 'update'])->middleware(['auth', 'verified'])->name('dashboard/service/update');
 
+
+
+
+Route::post('/dashboard/account/add_{iduser}', [AccountController::class, 'edit'])->middleware(['auth', 'verified'])->name('dashboard/account/add');
 Route::get('/dashboard/account', [AccountController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/account');
-
-Route::get('/dashboard/service/create', [ServiceController::class, 'create'])->middleware(['auth', 'verified'])->name('dashboard/service/create');
-
-Route::post('/dashboard/services/add', [ServiceController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard/services/add');
-
 Route::get('/dashboard/admin_{iduser}', [UserController::class, 'updateAdmin'])->name('dashboard/updateAdmin');
+
+
+
+
 
 Route::get('/dashboard/customers/delete_{idcustomer}', [CustomerController::class, 'deleteCustomer'])->name('dashboard/customers/delete');
 

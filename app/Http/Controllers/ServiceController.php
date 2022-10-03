@@ -18,7 +18,12 @@ class ServiceController extends Controller
         return view(
             "dashboard-form-s",
             [
-                'services' => Service::all()
+                'services' => Service::all(),
+                "action" => route('dashboard/service/add'),
+                "title" => "",
+                "paragraph" => "",
+                "icon" => "",
+                "alt" => ""
             ]
         );
     }
@@ -30,7 +35,6 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('dashboard-form-s');
     }
 
     /**
@@ -69,7 +73,18 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service = Service::find($id);
+        return view(
+            'dashboard-form-s',
+            [
+                "services" => Service::all(),
+                "action" => route('dashboard/service/update', $service->id),
+                "title" => $service->title,
+                "paragraph" => $service->description,
+                "icon" => $service->url,
+                "alt" => $service->Alt
+            ]
+        );
     }
 
     /**
@@ -81,7 +96,13 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $service = Service::find($id);
+        $service->title = $request->title;
+        $service->description = $request->paragraph;
+        $service->url = $request->icon;
+        $service->Alt = $request->alt;
+        $service->save();
+        return Redirect::route('dashboard/service');
     }
 
     /**
