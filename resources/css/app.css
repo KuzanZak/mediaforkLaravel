@@ -817,6 +817,10 @@ body.template-dark {
     font-weight: bold;
 }
 
+.image-update{
+    width: 10%;
+}
+
 .button-dashboard{
     background-color: var(--secondary-color);
     color: white;

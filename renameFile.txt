@@ -1,0 +1,3 @@
+$path = $request->file('avatar')->storeAs(
+    'avatars', 'nom que l'on veut mettre'
+);

@@ -43,10 +43,19 @@
             <label for="title">Title :</label>
             <input class="input-dashboard" type="text" id="title" name="title" value="{{$title}}">
         </li>
+        @if($edit === 'add')
         <li class="form-items-dashboard">
             <label for="file">File : </label>
             <input class="input-dashboard" type="file" id="file" name="file" value="">
         </li>
+        @endif
+        @if ($edit === 'update')
+        <li class="form-items-dashboard">
+            <label for="image">Image : </label>
+            <img class="image-update" src="{{$image}}" alt="image">
+            <button type="button">change</button>
+        </li>
+        @endif
         <li class="form-items-dashboard">
             <input class="button-dashboard" type="submit" id="submit" name="submit-portfolio" value="Add portfolio">
         </li>

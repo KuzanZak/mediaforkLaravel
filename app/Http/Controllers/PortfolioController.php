@@ -24,6 +24,7 @@ class PortfolioController extends Controller
                 'portfolios' => Portfolio::all(),
                 'admin' => Auth::user()->admin,
                 "action" => route('dashboard/portfolio/add'),
+                "edit" => 'add',
                 "title" => "",
             ]
         );
@@ -80,7 +81,9 @@ class PortfolioController extends Controller
                 "portfolios" => Portfolio::all(),
                 'admin' => Auth::user()->admin,
                 "action" => route('dashboard/portfolio/update', $portfolio->id),
+                "edit" => 'update',
                 "title" => $portfolio->title,
+                "image" => asset($portfolio->url)
             ]
         );
     }
