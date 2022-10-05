@@ -40,7 +40,8 @@ class PortfolioController extends Controller
                 "action" => route('dashboard/portfolio/add'),
                 "edit" => 'add',
                 "title" => "",
-                "hidden" => ""
+                "hidden" => "",
+                'pageJs' => ""
             ]
         );
     }
@@ -89,7 +90,8 @@ class PortfolioController extends Controller
                 "edit" => 'update',
                 "title" => $portfolio->title,
                 "image" => asset($portfolio->url),
-                "hidden" => "hidden"
+                "hidden" => "hidden",
+                'pageJs' => "servicePortfolioJs"
             ]
         );
     }

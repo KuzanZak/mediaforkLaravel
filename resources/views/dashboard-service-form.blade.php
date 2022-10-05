@@ -1,4 +1,5 @@
 @extends('dashboard')
+@section('pageJs', $pageJs)
 @section('content')
 
 @if($errors->any())

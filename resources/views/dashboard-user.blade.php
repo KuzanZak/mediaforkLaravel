@@ -1,4 +1,5 @@
 @extends('dashboard')
+@section('pageJs', 'userJs')
 @section('content')
 
 @if($errors->any())
@@ -11,14 +12,16 @@
 </div>
 @endif
 
-<h2 class="title-dashboard">
+<h2 id="link-list-users" class=" title-dashboard">
     Users
 </h2>
-<div class="list-title-dashboard-users">
+
+
+<div class="list-title-dashboard-users hidden" id="list-title-dashboard-users">
     <h3 class="subtitle-dashboard">List of Admins</h3>
     <h3 class="subtitle-dashboard">List of Users</h3>
 </div>
-<section class="list-dashboard-users">
+<section class="list-dashboard-users hidden" id="list-dashboard-users">
     <ul class="list-dashboard-admin">
         @foreach($users as $user)
         @if ($user->admin === 1)

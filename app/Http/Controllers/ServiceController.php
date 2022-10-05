@@ -43,7 +43,8 @@ class ServiceController extends Controller
                 'paragraph' => "",
                 'alt' => "",
                 'edit' => "add",
-                'hidden' => ""
+                'hidden' => "",
+                'pageJs' => ""
             ]
         );
     }
@@ -96,7 +97,8 @@ class ServiceController extends Controller
                 'alt' => $service->Alt,
                 'edit' => 'update',
                 'image' => asset($service->url),
-                'hidden' => "hidden"
+                'hidden' => "hidden",
+                'pageJs' => "servicePortfolioJs"
             ]
         );
     }
