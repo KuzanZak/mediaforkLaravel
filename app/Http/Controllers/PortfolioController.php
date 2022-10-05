@@ -19,13 +19,10 @@ class PortfolioController extends Controller
     public function index()
     {
         return view(
-            "dashboard-form-p",
+            "dashboard-portfolio",
             [
-                'portfolios' => Portfolio::all()->take(6),
-                'admin' => Auth::user()->admin,
-                "action" => route('dashboard/portfolio/add'),
-                "edit" => 'add',
-                "title" => "",
+                'portfolios' => Portfolio::all(),
+                'admin' => Auth::user()->admin
             ]
         );
     }
@@ -37,6 +34,15 @@ class PortfolioController extends Controller
      */
     public function create()
     {
+        return view(
+            "dashboard-portfolio-form",
+            [
+                "action" => route('dashboard/portfolio/add'),
+                "edit" => 'add',
+                "title" => "",
+                "hidden" => ""
+            ]
+        );
     }
 
     /**
@@ -49,7 +55,6 @@ class PortfolioController extends Controller
     {
         $portfolio = new Portfolio;
         $portfolio->title = $request->title;
-        // $portfolio->url = $request->file('file')->store('public/portfolio');
         $portfolio->url = Storage::putFile('portfolio', $request->file('file'));
         $portfolio->save();
         return Redirect::route('dashboard/portfolio');
@@ -76,14 +81,15 @@ class PortfolioController extends Controller
     {
         $portfolio = Portfolio::find($id);
         return view(
-            'dashboard-form-p',
+            'dashboard-portfolio-form',
             [
                 "portfolios" => Portfolio::all(),
                 'admin' => Auth::user()->admin,
                 "action" => route('dashboard/portfolio/update', $portfolio->id),
                 "edit" => 'update',
                 "title" => $portfolio->title,
-                "image" => asset($portfolio->url)
+                "image" => asset($portfolio->url),
+                "hidden" => "hidden"
             ]
         );
     }

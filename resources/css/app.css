@@ -817,8 +817,37 @@ body.template-dark {
     font-weight: bold;
 }
 
+.content-add-link{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.content-back-link{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.add-button, .back-button{
+    background-color: var(--light-grey);
+    color: white;
+    padding: .2rem;
+    margin: .5rem;
+}
+
 .image-update{
-    width: 10%;
+    width: 55%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.change-button{
+    text-align: center;
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    padding: .1rem;
+    background-color: var(--light-grey);
+    color: white;
 }
 
 .button-dashboard{
@@ -827,6 +856,13 @@ body.template-dark {
     padding: .4rem;
     width: 50%;
     margin: 0 auto;
+}
+
+.hidden{
+    display: none;
+}
+.display{
+    display: flex;
 }
 
 @media screen and (min-width: 520px) {
@@ -841,18 +877,22 @@ body.template-dark {
         padding: .6rem;
         margin: 1rem auto; 
     }
-    .form-list-dashboard{
-        position : relative; 
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
 
     .input-dashboard{
         margin: 0;
     }
+
+    .image-update{
+        width: 40%;
+    }
+
     .button-dashboard{
-        width: 50%;
-        margin: 0;
+        width: 25%;
+        margin-top: 0;
+    }
+    .change-button{
+        margin: .5rem auto;
+        width: 15%;
     }
     
 }
@@ -864,15 +904,21 @@ body.template-dark {
     .title-dashboard{
         padding: .5rem;
     }
-    .form-list-dashboard{
-        position : relative; 
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
     .input-dashboard{
         width: 70%;
     }
     .button-dashboard{
         width: 30%;
+    }
+    .image-update{
+        width: 35%;
+    }
+    .button-dashboard{
+        width: 18%;
+        margin-top: 0;
+    }
+    .change-button{
+        margin: .5rem auto;
+        width: 10%;
     }
 }

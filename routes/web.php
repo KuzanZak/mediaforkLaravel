@@ -33,6 +33,7 @@ Route::get('/dashboard/customers', [CustomerController::class, 'index'])->middle
 
 Route::get('/dashboard/portfolio', [PortfolioController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/portfolio');
 Route::post('/dashboard/portfolio/add', [PortfolioController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard/portfolio/add');
+Route::get('/dashboard/portfolio/create', [PortfolioController::class, 'create'])->middleware(['auth', 'verified'])->name('dashboard/portfolio/create');
 Route::get('/dashboard/portfolio/edit_{idportfolio}', [PortfolioController::class, 'edit'])->middleware(['auth', 'verified'])->name('dashboard/portfolio/edit');
 Route::post('/dashboard/portfolio/update_{idportfolio}', [PortfolioController::class, 'update'])->middleware(['auth', 'verified'])->name('dashboard/portfolio/update');
 
