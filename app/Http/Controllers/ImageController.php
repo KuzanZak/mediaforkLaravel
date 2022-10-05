@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Portfolio;
-use App\Models\User;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
-class PortfolioController extends Controller
+class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +18,9 @@ class PortfolioController extends Controller
     public function index()
     {
         return view(
-            "dashboard-portfolio",
+            "dashboard-image",
             [
-                'portfolios' => Portfolio::all(),
+                'images' => Image::all(),
                 'admin' => Auth::user()->admin
             ]
         );
@@ -35,13 +34,9 @@ class PortfolioController extends Controller
     public function create()
     {
         return view(
-            "dashboard-portfolio-form",
+            "dashboard-image-form",
             [
-                "action" => route('dashboard/portfolio/add'),
-                "edit" => 'add',
-                "title" => "",
-                "hidden" => "",
-                'pageJs' => ""
+                "action" => route('dashboard/image/add')
             ]
         );
     }
@@ -54,11 +49,12 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        $portfolio = new Portfolio;
-        $portfolio->title = $request->title;
-        $portfolio->description = Storage::putFile('portfolio', $request->file('file'));
-        $portfolio->save();
-        return Redirect::route('dashboard/portfolio');
+        $image = new Image();
+        $image->url = Storage::putFile('portfolio', $request->file('file'));
+        $image->alt = $request->alt;
+        $image->main = $request->main;
+        $image->save();
+        return Redirect::route('dashboard/image/create');
     }
 
     /**
@@ -80,20 +76,7 @@ class PortfolioController extends Controller
      */
     public function edit($id)
     {
-        $portfolio = Portfolio::find($id);
-        return view(
-            'dashboard-portfolio-form',
-            [
-                "portfolios" => Portfolio::all(),
-                'admin' => Auth::user()->admin,
-                "action" => route('dashboard/portfolio/update', $portfolio->id),
-                "edit" => 'update',
-                "title" => $portfolio->title,
-                "image" => asset($portfolio->description),
-                "hidden" => "hidden",
-                'pageJs' => "servicePortfolioJs"
-            ]
-        );
+        //
     }
 
     /**
@@ -105,11 +88,7 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $portfolio = Portfolio::find($id);
-        $portfolio->title = $request->title;
-        $portfolio->description = Storage::putFile('portfolio', $request->file('file'));
-        $portfolio->save();
-        return Redirect::route('dashboard/portfolio');
+        //
     }
 
     /**
@@ -118,10 +97,8 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroyPortfolio($id)
+    public function destroy($id)
     {
-        $portfolio = Portfolio::find($id);
-        $portfolio->delete();
-        return Redirect::route('dashboard/portfolio');
+        //
     }
 }

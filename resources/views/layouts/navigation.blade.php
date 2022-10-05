@@ -31,6 +31,9 @@
                     <x-nav-link :href="route('dashboard/account')" :active="request()->routeIs('dashboard/account')">
                         {{ __('Account') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('dashboard/image')" :active="request()->routeIs('dashboard/image')">
+                        {{ __('Image') }}
+                    </x-nav-link>
                 </div>
             </div>
 

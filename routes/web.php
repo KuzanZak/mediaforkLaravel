@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,9 @@ Route::get('/dashboard/service/edit_{idservice}', [ServiceController::class, 'ed
 Route::post('/dashboard/service/update_{idservice}', [ServiceController::class, 'update'])->middleware(['auth', 'verified'])->name('dashboard/service/update');
 
 
+Route::get('/dashboard/image', [ImageController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/image');
+Route::get('/dashboard/image/create', [ImageController::class, 'create'])->middleware(['auth', 'verified'])->name('dashboard/image/create');
+Route::post('/dashboard/image/add', [ImageController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard/image/add');
 
 
 Route::post('/dashboard/account/add_{iduser}', [AccountController::class, 'edit'])->middleware(['auth', 'verified'])->name('dashboard/account/add');

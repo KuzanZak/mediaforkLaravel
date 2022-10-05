@@ -20,7 +20,7 @@ switch (body) {
             document.getElementById('file').classList.toggle('hidden');
             document.getElementById('submit').value = "Update"
         });
-    break;        
+        break;        
     default:
       console.log(`Sorry, [data-js] is null!.`);
   }
