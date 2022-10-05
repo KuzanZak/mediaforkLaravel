@@ -21,7 +21,7 @@ class PortfolioController extends Controller
         return view(
             "dashboard-form-p",
             [
-                'portfolios' => Portfolio::all(),
+                'portfolios' => Portfolio::all()->take(6),
                 'admin' => Auth::user()->admin,
                 "action" => route('dashboard/portfolio/add'),
                 "edit" => 'add',

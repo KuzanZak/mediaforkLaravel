@@ -17,8 +17,8 @@ class MediaController extends Controller
     public function index()
     {
         return view('page', [
-            'portfolios' => Portfolio::all(),
-            'services' => Service::all()
+            'portfolios' => Portfolio::all()->sortBy('id')->take(6),
+            'services' => Service::all()->sortBy('id')->take(4)
         ]);
     }
 
