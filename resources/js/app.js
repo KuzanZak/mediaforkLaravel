@@ -9,16 +9,11 @@ Alpine.start();
 
 const body = document.body.getAttribute('data-js'); 
 function checkedBox($checkbox){
-    $checkbox.toggleAttribute('checked');
-    if($checkbox.hasAttribute('checked')) {
-        document.querySelectorAll(`.radio-image[value='${$checkbox.value}']`).forEach(radio => {
-            radio.removeAttribute('disabled');
-        });
-    } else {
-        document.querySelectorAll('.radio-image').forEach(radio => {
-            radio.setAttribute("disabled");
-        });
-    }
+    $checkbox.toggleAttribute('checked'); 
+    document.querySelectorAll(`.radio-image[value='${$checkbox.value}']`).forEach(radio => {
+        radio.toggleAttribute('disabled');
+        radio.checked=false;
+    });
 };
 
 switch (body) {
