@@ -17,9 +17,9 @@
 <ul class="list-dashboard">
     @foreach($portfolios as $portfolio)
     <li class="list-items-dashboard">
-        <p class="data-dashboard"><span class="span-title-dashboard">Id Portfolio :</span> {{ $portfolio->id }}</p>
-        <p class="data-dashboard"><span class="span-title-dashboard">Title Portfolio :</span> {{ $portfolio->title }}</p>
-        <p class="data-dashboard"><span class="span-title-dashboard">Image Portfolio :</span> {{ asset($portfolio->url) }}</p>
+        <p class="data-dashboard"><span class="span-title-dashboard">Id :</span> {{ $portfolio->id }}</p>
+        <p class="data-dashboard"><span class="span-title-dashboard">Title :</span> {{ $portfolio->title }}</p>
+        <p class="data-dashboard"><span class="span-title-dashboard">Description :</span> {{ asset($portfolio->url) }}</p>
         @if ($admin === 1)
         <p class="data-dashboard"><span class="span-title-dashboard">Delete :</span>
             <a href="{{ @route('dashboard/portfolio/delete', $portfolio->id)}}">

@@ -31,6 +31,21 @@
             @endif
         </li>
         <li class="form-items-dashboard">
+            <label for="images">Images :</label>
+            <ul class="list-dashboard">
+                @foreach ($images as $image)
+                <li class="form-items-dashboard">
+                    <img class="image-update" src="{{asset($image->url)}}" alt="{{$image->alt}}">
+                    <div class="inputs-images">
+                        <input class="checkbox-image" type="checkbox" value="{{$image->id}}">
+                        <input class="radio-image" type="radio" name="main" value="{{$image->id}}">
+                    </div>
+                </li>
+                @endforeach
+            </ul>
+
+        </li>
+        <li class="form-items-dashboard">
             <input class="button-dashboard" type="submit" id="submit" name="submit-portfolio" value="Add portfolio">
         </li>
     </ul>

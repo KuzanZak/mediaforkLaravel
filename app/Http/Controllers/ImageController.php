@@ -36,7 +36,12 @@ class ImageController extends Controller
         return view(
             "dashboard-image-form",
             [
-                "action" => route('dashboard/image/add')
+                "action" => route('dashboard/image/add'),
+                "hidden" => "",
+                "pageJs" => "",
+                'alt' => "",
+                'edit' => 'add',
+                'value' => "Add image"
             ]
         );
     }
@@ -52,7 +57,6 @@ class ImageController extends Controller
         $image = new Image();
         $image->url = Storage::putFile('portfolio', $request->file('file'));
         $image->alt = $request->alt;
-        $image->main = $request->main;
         $image->save();
         return Redirect::route('dashboard/image/create');
     }
@@ -76,7 +80,21 @@ class ImageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $image = Image::find($id);
+        return view(
+            'dashboard-image-form',
+            [
+                'images' => Image::all(),
+                'admin' => Auth::user()->admin,
+                'action' => route('dashboard/image/update', $image->id),
+                'alt' => $image->alt,
+                'edit' => 'update',
+                'image' => asset($image->url),
+                "hidden" => "hidden",
+                "pageJs" => "servicePortfolioJs",
+                'value' => "Update"
+            ]
+        );
     }
 
     /**
@@ -88,7 +106,14 @@ class ImageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $image = image::find($id);
+        $image->alt = $request->alt;
+        $imageFile = $request->file('file');
+        if (isset($imageFile)) {
+            $image->url = Storage::putFile('portfolio', $request->file('file'));
+        };
+        $image->save();
+        return Redirect::route('dashboard/image');
     }
 
     /**
@@ -99,6 +124,8 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $image = Image::find($id);
+        $image->delete();
+        return Redirect::route('dashboard/image');
     }
 }

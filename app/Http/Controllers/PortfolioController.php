@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Portfolio;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -41,7 +42,8 @@ class PortfolioController extends Controller
                 "edit" => 'add',
                 "title" => "",
                 "hidden" => "",
-                'pageJs' => ""
+                'pageJs' => "images",
+                'images' => Image::all(),
             ]
         );
     }
@@ -91,7 +93,8 @@ class PortfolioController extends Controller
                 "title" => $portfolio->title,
                 "image" => asset($portfolio->description),
                 "hidden" => "hidden",
-                'pageJs' => "servicePortfolioJs"
+                'pageJs' => "servicePortfolioJs",
+                'images' => ""
             ]
         );
     }

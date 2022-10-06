@@ -50,6 +50,8 @@ Route::post('/dashboard/service/update_{idservice}', [ServiceController::class, 
 Route::get('/dashboard/image', [ImageController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard/image');
 Route::get('/dashboard/image/create', [ImageController::class, 'create'])->middleware(['auth', 'verified'])->name('dashboard/image/create');
 Route::post('/dashboard/image/add', [ImageController::class, 'store'])->middleware(['auth', 'verified'])->name('dashboard/image/add');
+Route::get('/dashboard/image/edit_{idimage}', [ImageController::class, 'edit'])->middleware(['auth', 'verified'])->name('dashboard/image/edit');
+Route::post('/dashboard/image/update_{idimage}', [ImageController::class, 'update'])->middleware(['auth', 'verified'])->name('dashboard/image/update');
 
 
 Route::post('/dashboard/account/add_{iduser}', [AccountController::class, 'edit'])->middleware(['auth', 'verified'])->name('dashboard/account/add');
@@ -65,6 +67,8 @@ Route::get('/dashboard/customers/delete_{idcustomer}', [CustomerController::clas
 Route::get('/dashboard/portfolio/delete_{idcustomer}', [PortfolioController::class, 'destroyPortfolio'])->name('dashboard/portfolio/delete');
 
 Route::get('/dashboard/service/delete_{idcustomer}', [ServiceController::class, 'destroyService'])->name('dashboard/service/delete');
+
+Route::get('/dashboard/image/delete_{idimage}', [ImageController::class, 'destroy'])->name('dashboard/image/delete');
 
 Route::get('/dashboard/delete_{iduser}', [UserController::class, 'deleteUser'])->name('dashboard/deleteUser');
 

@@ -840,6 +840,13 @@ body.template-dark {
     margin: 0 auto;
 }
 
+.inputs-images{
+    margin: 0 auto;
+}
+.checkbox-image, .radio-image{
+    margin: 0.5rem auto;
+}
+
 .change-button{
     text-align: center;
     width: 30%;

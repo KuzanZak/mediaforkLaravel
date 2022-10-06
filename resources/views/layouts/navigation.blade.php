@@ -34,6 +34,9 @@
                     <x-nav-link :href="route('dashboard/image')" :active="request()->routeIs('dashboard/image')">
                         {{ __('Image') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('media')" :active="request()->routeIs('media')">
+                        {{ __('Mediafork') }}
+                    </x-nav-link>
                 </div>
             </div>
 

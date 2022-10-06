@@ -21,8 +21,18 @@
     <li class="list-items-dashboard">
         <p class="data-dashboard-img"><img class="image-update" src="{{ asset($image->url) }}"></p>
         <p class="data-dashboard-img"><span class="span-title-dashboard-img">Id :</span> {{ $image->id }}</p>
-        <!-- <p class="data-dashboard"><span class="span-title-dashboard">Main :</span> {{ $image->main }}</p>
-        <p class="data-dashboard"><span class="span-title-dashboard">Portofolio id :</span> {{ $image->portfolio_id }}</p> -->
+        @if($admin === 1)
+        <p class="data-dashboard"><span class="span-title-dashboard">Delete :</span>
+            <a href="{{ @route('dashboard/image/delete', $image->id)}}">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </a>
+        </p>
+        <p class="data-dashboard"><span class="span-title-dashboard">Modify :</span>
+            <a href="{{ @route('dashboard/image/edit', $image->id)}}">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </a>
+        </p>
+        @endif
         <hr>
     </li>
     @endforeach
