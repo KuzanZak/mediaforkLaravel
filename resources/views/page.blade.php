@@ -75,7 +75,9 @@
             <ul class="portfolio-grid">
                 @foreach ($portfolios as $portfolio)
                 <li>
-                    <img class="portfolio-img" src="/laravel/mediafork/public/{{$portfolio->description}}" alt="{{ $portfolio->title }}">
+                    @foreach($images as $image)
+                    <img class="portfolio-img" src="/laravel/mediafork/public/{{$image->url}}" alt="{{ $image->title }}">
+                    @endforeach
                     <a href="#" class="portfolio-block">
                         <span class="portfolio-brand">{{ $portfolio->title }}</span>
                     </a>

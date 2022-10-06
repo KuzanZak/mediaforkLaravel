@@ -19,7 +19,7 @@
     <li class="list-items-dashboard">
         <p class="data-dashboard"><span class="span-title-dashboard">Id :</span> {{ $portfolio->id }}</p>
         <p class="data-dashboard"><span class="span-title-dashboard">Title :</span> {{ $portfolio->title }}</p>
-        <p class="data-dashboard"><span class="span-title-dashboard">Description :</span> {{ asset($portfolio->url) }}</p>
+        <p class="data-dashboard"><span class="span-title-dashboard">Description :</span> {{ ($portfolio->description) }}</p>
         @if ($admin === 1)
         <p class="data-dashboard"><span class="span-title-dashboard">Delete :</span>
             <a href="{{ @route('dashboard/portfolio/delete', $portfolio->id)}}">

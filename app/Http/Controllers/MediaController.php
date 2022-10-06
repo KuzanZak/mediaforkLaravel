@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Portfolio;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -16,9 +17,12 @@ class MediaController extends Controller
      */
     public function index()
     {
+        // var_dump(Image::all()->where('portfolio_id', '<>', ''));
+        // exit;
         return view('page', [
             'portfolios' => Portfolio::all()->sortBy('id')->take(6),
-            'services' => Service::all()->sortBy('id')->take(4)
+            'services' => Service::all()->sortBy('id')->take(4),
+            'images' => Image::all()->where('portfolio_id', '<>', '', 'and')
         ]);
     }
 

@@ -1,3 +1,14 @@
 $path = $request->file('avatar')->storeAs(
     'avatars', 'nom que l'on veut mettre'
 );
+
+
+$portfolio->file = Storage::putFile('portfolio', $request->file('file'));
+<li class="form-items-dashboard form-update" id="form-item-upload">
+    <label for="file">image : </label>
+    <input class="input-dashboard {{$hidden}} input-file" type="file" id="file" name="file" value="">
+    @if ($edit === 'update')
+    <img id="image-update" class="image-update" src="{{$image}}" alt="image">
+    <button class="change-button" type="button" id="change-button">change</button>
+    @endif
+</li>

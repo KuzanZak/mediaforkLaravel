@@ -41,6 +41,7 @@ class PortfolioController extends Controller
                 "action" => route('dashboard/portfolio/add'),
                 "edit" => 'add',
                 "title" => "",
+                "description" => "",
                 "hidden" => "",
                 'pageJs' => "images",
                 'images' => Image::all(),
@@ -58,8 +59,14 @@ class PortfolioController extends Controller
     {
         $portfolio = new Portfolio;
         $portfolio->title = $request->title;
-        $portfolio->description = Storage::putFile('portfolio', $request->file('file'));
+        $portfolio->description = $request->description;
+        $portfolio->main_image_id = intval($request->main);
         $portfolio->save();
+        foreach ($request->checkbox as $id) {
+            $image = Image::find($id);
+            $image->portfolio_id = $portfolio->id;
+            $image->save();
+        }
         return Redirect::route('dashboard/portfolio');
     }
 
@@ -92,6 +99,7 @@ class PortfolioController extends Controller
                 "edit" => 'update',
                 "title" => $portfolio->title,
                 "image" => asset($portfolio->description),
+                "description" => "",
                 "hidden" => "hidden",
                 'pageJs' => "servicePortfolioJs",
                 'images' => ""
@@ -110,7 +118,7 @@ class PortfolioController extends Controller
     {
         $portfolio = Portfolio::find($id);
         $portfolio->title = $request->title;
-        $portfolio->description = Storage::putFile('portfolio', $request->file('file'));
+        $portfolio->description = $request->description;
         $portfolio->save();
         return Redirect::route('dashboard/portfolio');
     }
