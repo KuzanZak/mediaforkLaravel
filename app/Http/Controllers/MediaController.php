@@ -17,12 +17,11 @@ class MediaController extends Controller
      */
     public function index()
     {
-        // var_dump(Image::all()->where('portfolio_id', '<>', ''));
-        // exit;
+        var_dump(Portfolio::find(42)->images()->get());
+        exit;
         return view('page', [
             'portfolios' => Portfolio::all()->sortBy('id')->take(6),
-            'services' => Service::all()->sortBy('id')->take(4),
-            'images' => Image::all()->where('portfolio_id', '<>', '', 'and')
+            'services' => Service::all()->sortBy('id')->take(4)
         ]);
     }
 
